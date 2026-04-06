@@ -714,7 +714,7 @@ public class ClickGUI implements Listener {
                     return;
                 }
 
-                Bukkit.getScheduler().runTaskAsynchronously(InventoryRollback.getInstance(), () -> {
+                SchedulerUtils.runTaskAsynchronously(() -> {
                     // Unsupported on older versions
                     if (main.getVersion().lessThan(MCVersion.v1_11.toBukkitVersion())) {
                         return;
@@ -770,7 +770,7 @@ public class ClickGUI implements Listener {
                         }
                     };
 
-                    Bukkit.getScheduler().runTask(main, t -> {
+                    SchedulerUtils.runTask(null, () -> {
                         staff.getInventory().addItem(shulkers.toArray(new ItemStack[0]));
                         staff.closeInventory();
                     });
